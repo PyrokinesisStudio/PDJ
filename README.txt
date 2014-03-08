@@ -30,6 +30,7 @@ http://opengameart.org/content/volcano-lava-floor
 http://opengameart.org/content/molten-rock-like-thing
 http://opengameart.org/content/3d-rock-tileset
 http://opengameart.org/content/environmental-and-props
+http://opengameart.org/content/low-poly-mushrooms
 
 Enemies:
 http://opengameart.org/content/abstract-rts-model-pack
@@ -75,6 +76,7 @@ http://opengameart.org/content/weapon-box-pack-3
 http://opengameart.org/content/weapon-box-pack-2
 http://opengameart.org/content/barrel-sci-fi
 http://opengameart.org/content/3rd-person-blender-sci-fi-pack
+http://opengameart.org/content/metal-barrels-pack
 
 Music:
 http://opengameart.org/content/attack-music-futuristic-pop
