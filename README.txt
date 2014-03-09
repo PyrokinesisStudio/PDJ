@@ -1,6 +1,8 @@
-The Interstellar Mining Consortium based on Bathos has detected energy signatures from a planet just outside of the current frontier.  Telescopic analysis suggests that this planet is being colonized by sapient aliens and that it is potentially rich in minerals.  Tsargis, our team has been hired by the IMC to recon this planet.  You are to assess the planet to determine its strategic and commercial value to the IMC and, if necessary, take actions to ensure no further alien colonization will take place there.  As you know, the majority of our resources are allocated toward fighting the Carc.  You will have to scavenge for supplies on-site.
+The Interstellar Mining Consortium based on Bathos has detected energy signatures from a planet just outside of the current frontier.  Telescopic analysis suggests that this planet is being colonized by sapient aliens and that it houses the remains of ancient Carc technology.  Tsargis, our team has been hired by the IMC to recon this planet.  You are to assess the planet to determine its strategic and commercial value to the IMC and, if necessary, take actions to keep any Carc technology out of the hands of the aliens.  As you know, the majority of our resources are allocated toward fighting the Vatragyr, so you will have to scavenge for supplies on-site.    Do what you can to keep the aliens from acquiring and activating these artifacts.
 
-You (the player, as the mercenary named Tsargis) start out with a loadout screen where you can pick a vehicle chassis and various weapons and accessories.  Your company's transport ship lands on the surface of the planet and you begin your mission.  My skimmer model, for example, has a pair of forward mounts for sensors or small guns; a pair of medium mounts that can hold booster engines, heavy missiles, mini-rocket pods, or large guns; and a pair of big thrusters that could potentially be swapped out for more advanced ones.  With the exception of thruster upgrades, all of these assets already exist, and many more can be made fairly easily.  In addition to missiles and direct-fire weapons like these, drones could also be deployed.
+You (the player, as the telepathic parasite and mercenary named Tsargis) start out with a loadout screen where you can pick a vehicle chassis and various weapons and accessories.  If the game includes the ability for the player to get out and walk around, this screen would be a good place to pick a host body for your tadpole-like form.  Your company's transport ship lands on the surface of the planet and you begin your mission.
+
+My skimmer model has a pair of forward mounts for sensors or small guns; a pair of medium mounts that can hold booster engines, heavy missiles, mini-rocket pods, or large guns; and a pair of big thrusters that could potentially be swapped out for more advanced ones.  With the exception of thruster upgrades, all of these assets already exist, and many more can be made fairly easily.  In addition to missiles and direct-fire weapons like these, drones could also be deployed.
 
 For how this loadout screen might look, SPAZ demonstrates: http://spacepiratesandzombies.com/mediawiki/index.php?title=Modules
 
@@ -12,9 +14,10 @@ How does this fit into the idea of a PDL?  The world need not be vast, but havin
 
 The transport can't fly everywhere with reckless abandon, justified by it not wanting to get shot down, but it can land in certain suitable areas after you've cleared out the defenses.  Although there is permadeath, these landing sites serve as checkpoints in a sense because you can visit your transport for repairs (using what scrap you have scavenged) and refits.  The terrain of the planet is volcanic, with the various fights primarily happening in basins, craters, and calderas connected by canyons.  At some point through the "campaign", you could lose access to your transport.  This could mean going through an underground area, or having the transport captured or destroyed.  The transport could potentially also be used as a fast-travel system to revisit areas you've already cleared.
 
-Player character:
-http://opengameart.org/content/modular-alien-skimmer-vehicle
-http://opengameart.org/content/fembot
+Player's vehicle: http://opengameart.org/content/modular-alien-skimmer-vehicle
+
+Player's body (alternate versions):
+http://opengameart.org/content/beetle-basic
 http://opengameart.org/content/evil-cyborg
 http://opengameart.org/content/rigged-textured-reptile
 
