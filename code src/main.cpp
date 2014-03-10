@@ -17,9 +17,9 @@ using namespace irr::io;
 using namespace irr::gui;
 
 #ifdef _IRR_WINDOWS_
-#pragma comment(lib, "Irrlicht.lib")
+//#pragma comment(lib, "Irrlicht.lib")
 //#pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
-#pragma comment(lib, "lua52.lib")
+//#pragma comment(lib, "lua52.lib")
 #endif
 
 IrrlichtDevice *irrlicht = nullptr;

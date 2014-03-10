@@ -24,4 +24,4 @@ RegisterDesign({
 	Attachments = { "PanzerTurret" }
 });
 
-SetPlayerVehicle("Panzer");
+--SetPlayerVehicle("Panzer");

@@ -37,7 +37,9 @@ void Component::Load(lua_State *L, int t) {
 			lua_pop(L, 1);
 		}
 	} else {
-		printf("Error: 'Tags' must be a list ie: { 'tag1', 'tag2' }");
+		if (lua_type(L, -1) != LUA_TNIL) {
+			printf("Error: 'Tags' must be a list ie: { 'tag1', 'tag2' }");
+		}
 	}
 	lua_pop(L, 1);
 }
@@ -73,7 +75,9 @@ void MountComponent::Load(lua_State *L, int t) {
 			lua_pop(L, 1);
 		}
 	} else {
-		printf("Error: 'Attachments' must be a table, ie: Attachments = { }");
+		if (lua_type(L, -1) != LUA_TNIL) {
+			printf("Error: 'Attachments' must be a table, ie: Attachments = { }");
+		}
 	}
 	lua_pop(L, 1);
 }
@@ -100,7 +104,9 @@ void TurretTemplate::loadChassisTags(lua_State *L, int t) {
 			lua_pop(L, 1);
 		}
 	} else {
-		printf("Error: 'ChassisTags' must be a list ie: { 'tag1', 'tag2' }");
+		if (lua_type(L, -1) != LUA_TNIL) {
+			printf("Error: 'ChassisTags' must be a list ie: { 'tag1', 'tag2' }");
+		}
 	}
 	lua_pop(L, 1);
 }
