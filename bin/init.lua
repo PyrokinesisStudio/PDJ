@@ -1,16 +1,17 @@
 
 -- Procedural Death Planet Vehicle init
 
-RegisterChassis({
+Chassis({
 	Name = "PanzerBody",
 	Meshes = { "panzerwagen_body.b3d" },
 	Texture = "texture_terran_vehicle.png",
-	Attachments = { { type = "Turret", offset = { 0.0, 1.6, 1.2 } } },
+	MountPoints = {
+		{ Type = "Turret", Offset = { 0.0, 1.6, 1.2 } }
+	},
 	Tags = { "panzer" }
 });
---offset = { 0.0, 1.6, 1.2 }
 
-RegisterTurret({
+Turret({
 	Name = "PanzerTurret",
 	Meshes = { "panzerwagen_turret.b3d" },
 	Texture = "texture_terran_vehicle.png",
@@ -18,10 +19,41 @@ RegisterTurret({
 	ChassisTags = { "panzer" } -- chassis must have each of these (use "*" for 'any')
 });
 
-RegisterDesign({
+Design({
 	Name = "Panzer",
 	Chassis = "PanzerBody",
-	Attachments = { "PanzerTurret" }
+	Components = { "PanzerTurret" }
 });
 
-SetPlayerVehicle("Panzer");
+Chassis({
+	Name = "SkimmerChassis",
+	Meshes = { "skimmer_body.b3d" },
+	Texture = "body_diffuse.png",
+	MountPoints = {
+		{ Type = "Engine", Offset = { 0.0, 3, -3 } },
+		{ Type = "Turret", Offset = { 0.0, 2.5, 3 } }
+	},
+	Tags = { "Skimmer", "Player" }
+});
+
+Turret({
+	Name = "SkimmerCannons",
+	Meshes = { "skimmer_cannons.b3d" },
+	Texture = "cannons_diffuse.png",
+	ChassisTags = { "Skimmer" }
+});
+
+Engine({
+	Name = "SkimmerBoosters",
+	Meshes = { "skimmer_boosters.b3d" },
+	Texture = "boosters_diffuse.png",
+	ChassisTags = { "Skimmer" }
+});
+
+Design({
+	Name = "Skimmer",
+	Chassis = "SkimmerChassis",
+	Components = { "SkimmerBoosters", "SkimmerCannons" }
+});
+
+SetPlayerVehicle("Skimmer");

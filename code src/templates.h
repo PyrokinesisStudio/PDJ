@@ -91,6 +91,16 @@ private:
 	void loadChassisTags(lua_State *L, int t);
 };
 
+class EngineTemplate : public Component {
+public:
+	virtual void Load(lua_State *L, int t) override;
+};
+
+class SensorTemplate : public Component {
+public:
+	virtual void Load(lua_State *L, int t) override;
+};
+
 class ChassisTemplate : public Component, public MountComponent {
 public:
 	virtual void Load(lua_State *L, int t) override;
@@ -100,8 +110,9 @@ class VehicleDesign {
 private:
 	std::string m_name;
 	ChassisTemplate *m_chassis;
-	std::list<TurretTemplate*> m_turrets;
-	std::list<WeaponTemplate*> m_weapons;
+	std::list<Component*> m_components;
+	//std::list<TurretTemplate*> m_turrets;
+	//std::list<WeaponTemplate*> m_weapons;
 
 public:
 	VehicleDesign() : m_chassis(nullptr) {}
@@ -110,8 +121,10 @@ public:
 
 	const std::string& name() const { return m_name; }
 	const ChassisTemplate* chassis() const { return m_chassis; }
-	const std::list<TurretTemplate*>& turrets() const { return m_turrets; }
-	const std::list<WeaponTemplate*>& weapons() const { return m_weapons; }
+
+	const std::list<Component*>& components() const { return m_components; }
+	//const std::list<TurretTemplate*>& turrets() const { return m_turrets; }
+	//const std::list<WeaponTemplate*>& weapons() const { return m_weapons; }
 };
 
 }

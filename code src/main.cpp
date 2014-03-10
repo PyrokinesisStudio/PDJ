@@ -70,23 +70,24 @@ ISceneNode* spawnVehicle( const pdp::VehicleDesign *design, const vector3df &pos
 			playerChassis = mesh_node;
 		}
 	}
+	std::list<pdp::Component*>::const_iterator tit = design->components().begin();
 	for (int i=0; i < design->chassis()->attachments().size(); ++i) {
 		pdp::Attachment a = design->chassis()->attachments()[i];
-		std::list<pdp::TurretTemplate*>::const_iterator tit = design->turrets().begin();
-		if (a.type() == "Turret") {
-			it = (*tit)->meshes().begin();
-			itEnd = (*tit)->meshes().end();
-			for (; it != itEnd; ++it) {
-				IAnimatedMesh *mesh = *it;
-				IMeshSceneNode *turr_node = smgr->addMeshSceneNode( mesh, container_node );
-				if (turr_node) {
-					turr_node->setMaterialFlag( EMF_LIGHTING, false );
-					turr_node->setMaterialTexture( 0, (*tit)->texture() );
-					turr_node->setPosition(a.offset());
+		it = (*tit)->meshes().begin();
+		itEnd = (*tit)->meshes().end();
+		for (; it != itEnd; ++it) {
+			IAnimatedMesh *mesh = *it;
+			IMeshSceneNode *turr_node = smgr->addMeshSceneNode( mesh, container_node );
+			if (turr_node) {
+				turr_node->setMaterialFlag( EMF_LIGHTING, false );
+				turr_node->setMaterialTexture( 0, (*tit)->texture() );
+				turr_node->setPosition(a.offset());
+				if (a.type() == "Turret") {
 					playerTurret = turr_node;
 				}
 			}
 		}
+		++tit;
 	}
 	return container_node;
 }

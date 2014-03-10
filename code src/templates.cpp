@@ -45,7 +45,7 @@ void Component::Load(lua_State *L, int t) {
 }
 
 void MountComponent::Load(lua_State *L, int t) {
-	lua_getfield(L, t, "Attachments");
+	lua_getfield(L, t, "MountPoints");
 	if (lua_type(L, -1) == LUA_TTABLE) {
 		int tt = lua_gettop(L);
 		lua_pushnil(L);
@@ -55,11 +55,11 @@ void MountComponent::Load(lua_State *L, int t) {
 				float pos[3];
 				int ttt = lua_gettop(L);
 
-				lua_getfield(L, ttt, "type");
+				lua_getfield(L, ttt, "Type");
 				type = lua_tostring(L, -1);
 				lua_pop(L, 1);
 
-				lua_getfield(L, ttt, "offset");
+				lua_getfield(L, ttt, "Offset");
 				int tttt = lua_gettop(L);
 				lua_pushnil(L);
 				while (lua_next(L, tttt) != 0) {
@@ -74,10 +74,8 @@ void MountComponent::Load(lua_State *L, int t) {
 			}
 			lua_pop(L, 1);
 		}
-	} else {
-		if (lua_type(L, -1) != LUA_TNIL) {
-			printf("Error: 'Attachments' must be a table, ie: Attachments = { }");
-		}
+	} else if (lua_type(L, -1) != LUA_TNIL) {
+		printf("Error: 'MountPoints' must be a table, ie: MountPoints = { }");
 	}
 	lua_pop(L, 1);
 }
@@ -85,6 +83,16 @@ void MountComponent::Load(lua_State *L, int t) {
 void WeaponTemplate::Load(lua_State *L, int t) {
 	Component::Load(L, t);
 	getPatentOffice()->addWeapon(this);
+}
+
+void EngineTemplate::Load(lua_State *L, int t) {
+	Component::Load(L, t);
+	getPatentOffice()->addEngine(this);
+}
+
+void SensorTemplate::Load(lua_State *L, int t) {
+	Component::Load(L, t);
+	getPatentOffice()->addSensor(this);
 }
 
 void TurretTemplate::Load(lua_State *L, int t) {
@@ -127,7 +135,7 @@ void VehicleDesign::Load(lua_State *L, int t) {
 	lua_pop(L, 1);
 	this->m_chassis = getPatentOffice()->getChassisTemplate(c);
 
-	lua_getfield(L, t, "Attachments");
+	lua_getfield(L, t, "Components");
 
 	std::vector<std::string> attachments;
 
@@ -144,9 +152,13 @@ void VehicleDesign::Load(lua_State *L, int t) {
 		}
 		const Attachment &a = m_chassis->attachments()[i];
 		if (a.type() == "Turret") {
-			m_turrets.push_back(getPatentOffice()->getTurretTemplate(attachments[i]));
-		} else {
-			m_weapons.push_back(getPatentOffice()->getWeaponTemplate(attachments[i]));
+			m_components.push_back(getPatentOffice()->getTurretTemplate(attachments[i]));
+		} else if (a.type() == "Fixed" || a.type() == "Rotary") {
+			m_components.push_back(getPatentOffice()->getWeaponTemplate(attachments[i]));
+		} else if (a.type() == "Engine") {
+			m_components.push_back(getPatentOffice()->getEngineTemplate(attachments[i]));
+		} else if (a.type() == "Sensor") {
+			m_components.push_back(getPatentOffice()->getSensorTemplate(attachments[i]));
 		}
 	}
 	lua_pop(L, 1);

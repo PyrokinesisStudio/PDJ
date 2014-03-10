@@ -24,6 +24,20 @@ int addWeapon(lua_State *L) {
 	return 0;
 }
 
+int addEngine(lua_State *L) {
+	int t = lua_gettop(L);
+	pdp::EngineTemplate *engine = new pdp::EngineTemplate();
+	engine->Load(L, t);
+	return 0;
+}
+
+int addSensor(lua_State *L) {
+	int t = lua_gettop(L);
+	pdp::SensorTemplate *sensor = new pdp::SensorTemplate();
+	sensor->Load(L, t);
+	return 0;
+}
+
 int addDesign(lua_State *L) {
 	int t = lua_gettop(L);
 	pdp::VehicleDesign *design = new pdp::VehicleDesign();
@@ -45,10 +59,11 @@ std::string getPlayerVehicle() {
 
 void initTemplates() {
 	lua_State *L = luaL_newstate();
-	lua_register(L, "RegisterChassis", addChassis);
-	lua_register(L, "RegisterTurret", addTurret);
-	lua_register(L, "RegisterWeapon", addWeapon);
-	lua_register(L, "RegisterDesign", addDesign);
+	lua_register(L, "Chassis", addChassis);
+	lua_register(L, "Turret", addTurret);
+	lua_register(L, "Weapon", addWeapon);
+	lua_register(L, "Engine", addEngine);
+	lua_register(L, "Design", addDesign);
 
 	lua_register(L, "SetPlayerVehicle", setPlayer);
 
