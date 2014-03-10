@@ -31,9 +31,16 @@ int addDesign(lua_State *L) {
 	return 0;
 }
 
-int testlua(lua_State *L) {
-	printf("testlua()\n");
+
+std::string playerVehicle;
+
+int setPlayer(lua_State *L) {
+	playerVehicle = lua_tostring(L, -1);
 	return 0;
+}
+
+std::string getPlayerVehicle() {
+	return playerVehicle;
 }
 
 void initTemplates() {
@@ -42,6 +49,8 @@ void initTemplates() {
 	lua_register(L, "RegisterTurret", addTurret);
 	lua_register(L, "RegisterWeapon", addWeapon);
 	lua_register(L, "RegisterDesign", addDesign);
+
+	lua_register(L, "SetPlayerVehicle", setPlayer);
 
 	printf("doing some lua...\n");
 	int errorCode  = luaL_loadfile(L, "init.lua");

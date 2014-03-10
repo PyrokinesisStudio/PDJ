@@ -20,6 +20,8 @@ namespace pdp {
 	
 void initTemplates();
 
+std::string getPlayerVehicle();
+
 }
 
 #endif

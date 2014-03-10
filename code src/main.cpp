@@ -107,39 +107,8 @@ int main() {
 	IGUIEnvironment* guienv = irrlicht->getGUIEnvironment();
 
 
-	//IAnimatedMesh* body_mesh = smgr->getMesh("panzerwagen_body.b3d");
-	//if (!body_mesh) {
-	//	irrlicht->drop();
-	//	return 1;
-	//}
-	//IAnimatedMesh *turret_mesh = smgr->getMesh("panzerwagen_turret.b3d");
-	//if (!turret_mesh) {
-	//	irrlicht->drop();
-	//	return 1;
-	//}
-	//
-	//ISceneNode *container_node = smgr->addSceneNode("empty");
-
-	//ITexture *tex = driver->getTexture("texture_terran_vehicle.png");
-
-	//IAnimatedMeshSceneNode* body_node = smgr->addAnimatedMeshSceneNode( body_mesh, container_node );
-	//if (body_node) {
-	//	body_node->setMaterialFlag(EMF_LIGHTING, false);
-	//	body_node->setAnimationSpeed(20.0f);
-	//	body_node->setMaterialTexture( 0, tex );
-
-	//}
-	//IMeshSceneNode *turr_node = smgr->addMeshSceneNode( turret_mesh, container_node );
-	//if (turr_node) {
-	//	turr_node->setMaterialFlag( EMF_LIGHTING, false );
-	//	turr_node->setMaterialTexture( 0, tex );
-	//	turr_node->setPosition(vector3df(0.0f, 1.6f, 1.2f));
-	//	//turr_node->setPosition();
-	//}
-
-	//container_node->setRotation( vector3df( 0.0f, 90.0f, 0.0f ) );
-
-	pdp::VehicleDesign *design = pdp::getPatentOffice()->getVehicleDesign("Panzer");
+	pdp::VehicleDesign *design = pdp::getPatentOffice()->getVehicleDesign(pdp::getPlayerVehicle());
+	
 	if (design) {
 		player = spawnVehicle(design, vector3df(0.0f));
 	}
