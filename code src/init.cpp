@@ -25,6 +25,9 @@ int addWeapon(lua_State *L) {
 }
 
 int addDesign(lua_State *L) {
+	int t = lua_gettop(L);
+	pdp::VehicleDesign *design = new pdp::VehicleDesign();
+	design->Load(L, t);
 	return 0;
 }
 

@@ -64,6 +64,8 @@ public:
 	}
 };
 
+PatentOffice* getPatentOffice();
+
 }
 
 #endif

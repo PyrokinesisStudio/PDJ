@@ -8,7 +8,7 @@ RegisterChassis({
 	Attachments = { { type = "Turret", offset = { 0.0, 1.6, 1.2 } } },
 	Tags = { "panzer" }
 });
-
+--offset = { 0.0, 1.6, 1.2 }
 
 RegisterTurret({
 	Name = "PanzerTurret",

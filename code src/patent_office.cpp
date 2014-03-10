@@ -2,6 +2,10 @@
 
 namespace pdp {
 
-	PatentOffice *patentOffice = new PatentOffice();
+PatentOffice* getPatentOffice() {
+	static PatentOffice patentOffice;
+	return &patentOffice;
+}
+
 
 }

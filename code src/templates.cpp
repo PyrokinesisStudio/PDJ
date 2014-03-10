@@ -84,14 +84,14 @@ void MountComponent::Load(lua_State *L, int t) {
 
 void WeaponTemplate::Load(lua_State *L, int t) {
 	Component::Load(L, t);
-	patentOffice->addWeapon(this);
+	getPatentOffice()->addWeapon(this);
 }
 
 void TurretTemplate::Load(lua_State *L, int t) {
 	Component::Load(L, t);
 	MountComponent::Load(L, t);
 	loadChassisTags(L, t);
-	patentOffice->addTurret(this);
+	getPatentOffice()->addTurret(this);
 }
 
 void TurretTemplate::loadChassisTags(lua_State *L, int t) {
@@ -114,7 +114,7 @@ void TurretTemplate::loadChassisTags(lua_State *L, int t) {
 void ChassisTemplate::Load(lua_State *L, int t) {
 	Component::Load(L, t);
 	MountComponent::Load(L, t);
-	patentOffice->addChassis(this);
+	getPatentOffice()->addChassis(this);
 }
 
 void VehicleDesign::Load(lua_State *L, int t) {
@@ -125,7 +125,7 @@ void VehicleDesign::Load(lua_State *L, int t) {
 	lua_getfield(L, t, "Chassis");
 	std::string c = lua_tostring(L, -1);
 	lua_pop(L, 1);
-	this->m_chassis = patentOffice->getChassisTemplate(c);
+	this->m_chassis = getPatentOffice()->getChassisTemplate(c);
 
 	lua_getfield(L, t, "Attachments");
 
@@ -138,20 +138,20 @@ void VehicleDesign::Load(lua_State *L, int t) {
 		lua_pop(L, 1);
 	}
 
-	for (int i=0; i < m_chassis->numAttachments(); ++i) {
+	for (int i=0; i < m_chassis->attachments().size(); ++i) {
 		if (i >= (int)attachments.size()) {
 			break;
 		}
-		Attachment a = m_chassis->getAttachment(i);
-		if (a.m_type.compare("Turret") == 0) {
-			m_turrets.push_back(patentOffice->getTurretTemplate(attachments[i]));
+		const Attachment &a = m_chassis->attachments()[i];
+		if (a.type() == "Turret") {
+			m_turrets.push_back(getPatentOffice()->getTurretTemplate(attachments[i]));
 		} else {
-			m_weapons.push_back(patentOffice->getWeaponTemplate(attachments[i]));
+			m_weapons.push_back(getPatentOffice()->getWeaponTemplate(attachments[i]));
 		}
 	}
 	lua_pop(L, 1);
 
-	patentOffice->addVehicleDesign(this);
+	getPatentOffice()->addVehicleDesign(this);
 }
 
 }

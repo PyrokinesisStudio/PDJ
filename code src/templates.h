@@ -19,31 +19,34 @@ extern IrrlichtDevice *irrlicht;
 
 namespace pdp {
 
-class PatentOffice;
-extern PatentOffice *patentOffice;
-
 struct Attachment {
 	//enum Type { Turret, Sponson, FixedMount, RotaryMount, Engine, Sensor };
-
+private:
 	std::string m_type;
 	vector3df m_offset;
 
+public:
 	Attachment(const std::string &t, const vector3df &pos) : m_type(t), m_offset(pos) {}
 	Attachment(const Attachment &cpy) : m_type(cpy.m_type), m_offset(cpy.m_offset) {}
 
+	const std::string& type() const { return m_type; }
+	vector3df offset() const { return m_offset; }
 };
 
 class Component {
 protected:
 	std::string m_name;
 	std::list<std::string> m_tags;
-	std::list<IMesh*> m_meshes;
+	std::list<IAnimatedMesh*> m_meshes;
 	ITexture *m_texture;
 
 public:
 	virtual void Load(lua_State *L, int t);
 
-	std::string name() const { return m_name; }
+	const std::string& name() const { return m_name; }
+	const std::list<std::string>& tags() const { return m_tags; }
+	const std::list<IAnimatedMesh*>& meshes() const { return m_meshes; }
+	ITexture* texture() const { return m_texture; }
 
 private:
 	void addMesh(const char *m) {
@@ -62,8 +65,7 @@ protected:
 public:
 	virtual void Load(lua_State *L, int t);
 
-	int numAttachments() const { return m_attachments.size(); }
-	Attachment getAttachment(int i) { return m_attachments[i]; }
+	const std::vector<Attachment>& attachments() const { return m_attachments; }
 
 private:
 	void addAttachment(Attachment a) {
@@ -83,11 +85,10 @@ protected:
 public:
 	virtual void Load(lua_State *L, int t) override;
 
+	const std::list<std::string>& chassisTags() const { return m_chassisTags; }
+
 private:
 	void loadChassisTags(lua_State *L, int t);
-
-public:
-
 };
 
 class ChassisTemplate : public Component, public MountComponent {
@@ -107,7 +108,10 @@ public:
 
 	void Load(lua_State *L, int t);
 
-	std::string name() { return m_name; }
+	const std::string& name() const { return m_name; }
+	const ChassisTemplate* chassis() const { return m_chassis; }
+	const std::list<TurretTemplate*>& turrets() const { return m_turrets; }
+	const std::list<WeaponTemplate*>& weapons() const { return m_weapons; }
 };
 
 }
