@@ -1,4 +1,4 @@
-FIND_PATH(IRRLICHT_INCLUDE_DIR irrlicht/irrlicht.h
+FIND_PATH(IRRLICHT_INCLUDE_DIR irrlicht.h
    PATHS $ENV{IRRDIR}/include
    PATH_SUFFIXES irrlicht
 )

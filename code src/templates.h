@@ -115,7 +115,7 @@ private:
 	//std::list<WeaponTemplate*> m_weapons;
 
 public:
-	VehicleDesign() : m_chassis(nullptr) {}
+	VehicleDesign() : m_chassis(0) {}
 
 	void Load(lua_State *L, int t);
 

@@ -23,11 +23,11 @@ using namespace irr::gui;
 //#pragma comment(lib, "lua52.lib")
 #endif
 
-IrrlichtDevice *irrlicht = nullptr;
-ISceneNode *player = nullptr;
+IrrlichtDevice *irrlicht = 0;
+ISceneNode *player = 0;
 
-ISceneNode *playerChassis = nullptr;
-ISceneNode *playerTurret = nullptr;
+ISceneNode *playerChassis = 0;
+ISceneNode *playerTurret = 0;
 
 
 extern pdp::PatentOffice *patentOffice;
