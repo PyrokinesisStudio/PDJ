@@ -40,7 +40,7 @@ public:
 		if (it != m_weaponMap.end()) {
 			return it->second;
 		}
-		return nullptr;
+		return 0;
 	}
 
 	TurretTemplate* getTurretTemplate(const std::string &key) {
@@ -48,7 +48,7 @@ public:
 		if (it != m_turretMap.end()) {
 			return it->second;
 		}
-		return nullptr;
+		return 0;
 	}
 
 	EngineTemplate*  getEngineTemplate(const std::string &key) {
@@ -56,7 +56,7 @@ public:
 		if (it != m_engineMap.end()) {
 			return it->second;
 		}
-		return nullptr;
+		return 0;
 	}
 
 	SensorTemplate* getSensorTemplate(const std::string &key) {
@@ -64,7 +64,7 @@ public:
 		if (it != m_sensorMap.end()) {
 			return it->second;
 		}
-		return nullptr;
+		return 0;
 	}
 
 	ChassisTemplate* getChassisTemplate(const std::string &key) {
@@ -72,7 +72,7 @@ public:
 		if (it != m_chassisMap.end()) {
 			return it->second;
 		}
-		return nullptr;
+		return 0;
 	}
 
 	VehicleDesign* getVehicleDesign(const std::string &key) {
@@ -80,7 +80,7 @@ public:
 		if (it != m_vehicleDesigns.end()) {
 			return it->second;
 		}
-		return nullptr;
+		return 0;
 	}
 };
 
