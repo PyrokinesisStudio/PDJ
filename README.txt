@@ -107,6 +107,7 @@ http://opengameart.org/content/chaingun-pistol-rifle-shotgun-shots
 http://opengameart.org/content/4-projectile-launches
 http://opengameart.org/content/41-random-sound-effects
 http://opengameart.org/content/robotic-mechanic-step-sounds
+http://opengameart.org/content/the-free-firearm-sound-library
 
 Misc:
 http://opengameart.org/content/starship-corvette
