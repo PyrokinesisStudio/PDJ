@@ -30,8 +30,8 @@ Chassis({
 	Meshes = { "skimmer_body.b3d" },
 	Texture = "body_diffuse.png",
 	MountPoints = {
-		{ Type = "Engine", Offset = { 0.0, 3, -3 } },
-		{ Type = "Turret", Offset = { 0.0, 2.5, 3 } }
+		{ Type = "Engine", Offset = { 0.0, 1.8, 1 } },
+		{ Type = "Turret", Offset = { 0.0, 1.2, -0.7 } }
 	},
 	Tags = { "Skimmer", "Player" }
 });
@@ -56,4 +56,4 @@ Design({
 	Components = { "SkimmerBoosters", "SkimmerCannons" }
 });
 
-SetPlayerVehicle("Skimmer");
+SetPlayerVehicle("Panzer");

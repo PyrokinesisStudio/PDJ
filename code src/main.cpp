@@ -114,7 +114,7 @@ int main() {
         -1,                 // node id
         core::vector3df(0.f, 0.f, 0.f),     // position
         core::vector3df(0.f, 0.f, 0.f),     // rotation
-        core::vector3df(1.f, 1.0f, 1.f),  // scale
+        core::vector3df(5.f, 2.0f, 5.0f),  // scale
         video::SColor ( 255, 255, 255, 255 ),   // vertexColor
         5,                  // maxLOD
         scene::ETPS_17,             // patchSize
@@ -135,14 +135,14 @@ int main() {
 
 	pdp::VehicleDesign *design = pdp::getPatentOffice()->getVehicleDesign(pdp::getPlayerVehicle());
 	
-	ICameraSceneNode *camera = smgr->addCameraSceneNode( 0, vector3df( 0, 8, -20 ), vector3df( 0, 1, 0 ) );
+	ICameraSceneNode *camera = smgr->addCameraSceneNode( 0, vector3df( 0, 8, 20 ), vector3df( 0, 1, 0 ) );
 	if (design) {
 		player = spawnVehicle(design, vector3df(0.0f));
 		camera->setParent(player);
 	} 
 	camera->setFOV( 0.34906585f );
 
-	//player->setPosition(vector3df(0.0f, 100.0f, 0.0f));
+	player->setPosition(vector3df(50.0f, 10.0f, 50.0f));
 
 	u32 prevT = irrlicht->getTimer()->getTime();
 
@@ -175,6 +175,25 @@ int main() {
 			(ctrl ? playerTurret : player)->setRotation( rot );
 		}
 
+		float v = 0.0f;
+		if (eventHandler.IsKeyDown(KEY_UP)) {
+			v = 1.0f;
+		} else if (eventHandler.IsKeyDown(KEY_DOWN)) {
+			v = -1.0f;
+		}
+		vector3df ppos = player->getPosition();
+
+		const float pspeed = 3.5f;
+		v *= pspeed * deltaT;
+		float rad = degToRad(player->getRotation().Y);
+		ppos.Z -= cosf(rad) * v;
+		ppos.X -= sinf(rad) * v;
+
+		float h = terrain->getHeight(ppos.X, ppos.Z);
+		ppos.Y = h;
+		player->setPosition(ppos);
+		ppos.Y += 4.0f;
+		camera->setTarget(ppos);
 		driver->beginScene( true, true, SColor(255,100,101,140) );
 
 		smgr->drawAll();
