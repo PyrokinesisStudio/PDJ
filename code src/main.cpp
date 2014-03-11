@@ -107,16 +107,42 @@ int main() {
 	ISceneManager* smgr = irrlicht->getSceneManager();
 	IGUIEnvironment* guienv = irrlicht->getGUIEnvironment();
 
+	// add terrain scene node
+    scene::ITerrainSceneNode* terrain = smgr->addTerrainSceneNode(
+        "terrain-heightmap.bmp",
+        0,                  // parent node
+        -1,                 // node id
+        core::vector3df(0.f, 0.f, 0.f),     // position
+        core::vector3df(0.f, 0.f, 0.f),     // rotation
+        core::vector3df(1.f, 1.0f, 1.f),  // scale
+        video::SColor ( 255, 255, 255, 255 ),   // vertexColor
+        5,                  // maxLOD
+        scene::ETPS_17,             // patchSize
+        4                   // smoothFactor
+        );
+
+    terrain->setMaterialFlag(video::EMF_LIGHTING, false);
+
+    terrain->setMaterialTexture(0,
+            driver->getTexture("terrain-texture.jpg"));
+    terrain->setMaterialTexture(1,
+            driver->getTexture("detailmap3.jpg"));
+    
+    terrain->setMaterialType(video::EMT_DETAIL_MAP);
+
+    terrain->scaleTexture(1.0f, 20.0f);
+
 
 	pdp::VehicleDesign *design = pdp::getPatentOffice()->getVehicleDesign(pdp::getPlayerVehicle());
 	
+	ICameraSceneNode *camera = smgr->addCameraSceneNode( 0, vector3df( 0, 8, -20 ), vector3df( 0, 1, 0 ) );
 	if (design) {
 		player = spawnVehicle(design, vector3df(0.0f));
-	}
-
-	ICameraSceneNode *camera = smgr->addCameraSceneNode( 0, vector3df( 0, 8, -20 ), vector3df( 0, 1, 0 ) );
-
+		camera->setParent(player);
+	} 
 	camera->setFOV( 0.34906585f );
+
+	//player->setPosition(vector3df(0.0f, 100.0f, 0.0f));
 
 	u32 prevT = irrlicht->getTimer()->getTime();
 
