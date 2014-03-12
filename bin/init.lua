@@ -28,7 +28,7 @@ Design({
 Chassis({
 	Name = "SkimmerChassis",
 	Meshes = { "skimmer_body.b3d" },
-	Texture = "body_diffuse.png",
+	Texture = "skimmer_diffuse.png",
 	MountPoints = {
 		{ Type = "Engine", Offset = { 0.0, 1.8, 1 } },
 		{ Type = "Turret", Offset = { 0.0, 1.2, -0.7 } }
@@ -39,14 +39,14 @@ Chassis({
 Turret({
 	Name = "SkimmerCannons",
 	Meshes = { "skimmer_cannons.b3d" },
-	Texture = "cannons_diffuse.png",
+	Texture = "skimmer_diffuse.png",
 	ChassisTags = { "Skimmer" }
 });
 
 Engine({
 	Name = "SkimmerBoosters",
 	Meshes = { "skimmer_boosters.b3d" },
-	Texture = "boosters_diffuse.png",
+	Texture = "skimmer_diffuse.png",
 	ChassisTags = { "Skimmer" }
 });
 
